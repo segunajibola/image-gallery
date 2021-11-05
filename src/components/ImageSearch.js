@@ -13,7 +13,7 @@ const ImageSearch = ({ searchText }) => {
 
 
     return (
-        <div className="max-w-sm rounded overflow-hidden my-10 mx-auto">
+        <div className="max-w-sm rounded overflow-hidden my-10 mx-auto 2xl:max-w-xl 2xl:p-5">
             <form onSubmit={onSubmit} className="w-full max-w-sm">
                 <div className="flex items-center border-b-2 border-teal-500 py-2">
                     <input onChange={e => setText(e.target.value)}
