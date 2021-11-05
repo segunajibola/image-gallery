@@ -1,4 +1,5 @@
 import react, { useState, useEffect } from "react";
+import ImageCard from "./components/ImageCard";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -6,39 +7,26 @@ function App() {
   const [term, setTerm] = useState("");
 
   useEffect(() => {
-    fetch(`https://pixabay.com/api/"key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`)
-  });
+    fetch(`https://pixabay.com/api/"key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`) 
+    //fetch images
+      .then(res => res.json())
+      .then(data => {
+          setImages(data.hits); //set images here
+          setIsLoading(false);
+        })
+      .catch(err => console.log(err));
+  }, []);
 
   return (
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-        <img src="https://source.unsplash.com/random" alt="" className="w-full"/>
-        <div className="px-6 py-4">
-          <div className="font-bold text-purple-500 text-xl mb-2">
-          Photo by John Doe
-          </div>
-          <ul>
-            <li>
-              <strong>Views: 4000</strong>
-            </li>
-            <li>
-              <strong>Downloads: 300</strong>
-            </li>
-            <li>
-              <strong>Likes: 400</strong>
-            </li>
-          </ul>
-        </div>
-        <div className="px-6 py-4">
-          <span className="inline-block bg-gray-200 rounded-ful px-3 py-1 text-sm font-semi-bold text-gray-700 mr-2">
-            #tag1
-          </span>
-          <span className="inline-block bg-gray-200 rounded-ful px-3 py-1 text-sm font-semi-bold text-gray-700 mr-2">
-            #tag2
-          </span>
-          <span className="inline-block bg-gray-200 rounded-ful px-3 py-1 text-sm font-semi-bold text-gray-700 mr-2">
-            #tag3
-          </span>
-        </div>
+    <div className="container mx-auto">
+      <div className="grid grid-cols-3 gap-4">
+       {/* // map through all images and set to "image" */}
+        {images.map(image => ( 
+          <ImageCard key={image.id}
+          //set image as a prop 
+          image={image}/>
+        ))}
+      </div>
     </div>
   );
 }
