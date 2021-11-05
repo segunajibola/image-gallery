@@ -19,14 +19,14 @@ function App() {
 
   return (
     <div className="container mx-auto">
-      <div className="grid grid-cols-3 gap-4">
+      {isLoading ? <h1 className="text-6xl">Images loading, please wait...</h1> : <div className="grid grid-cols-3 gap-4">
        {/* // map through all images and set to "image" */}
         {images.map(image => ( 
           <ImageCard key={image.id}
           //set image as a prop 
           image={image}/>
         ))}
-      </div>
+      </div>}
     </div>
   );
 }

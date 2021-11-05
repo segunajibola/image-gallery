@@ -1,35 +1,34 @@
 import React from 'react';
 
 const ImageCard = ({ image }) => {
+    const tags = image.tags.split(",");
+
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
         <img src="https://source.unsplash.com/random" alt="" className="w-full"/>
         <div className="px-6 py-4">
           <div className="font-bold text-purple-500 text-xl mb-2">
-          Photo by John Doe
+          Photo by {image.user}
           </div>
           <ul>
             <li>
-              <strong>Views: 4000</strong>
+              <strong>Views: {image.views}</strong>
             </li>
             <li>
-              <strong>Downloads: 300</strong>
+              <strong>Downloads: {image.downloads}</strong>
             </li>
             <li>
-              <strong>Likes: 400</strong>
+              <strong>Likes: {image.likes}</strong>
             </li>
           </ul>
         </div>
         <div className="px-6 py-4">
-          <span className="inline-block bg-gray-200 rounded-ful px-3 py-1 text-sm font-semi-bold text-gray-700 mr-2">
-            #tag1
-          </span>
-          <span className="inline-block bg-gray-200 rounded-ful px-3 py-1 text-sm font-semi-bold text-gray-700 mr-2">
-            #tag2
-          </span>
-          <span className="inline-block bg-gray-200 rounded-ful px-3 py-1 text-sm font-semi-bold text-gray-700 mr-2">
-            #tag3
-          </span>
+            {tags.map(tag => (
+               <span key={image.id} className="inline-block bg-gray-200 rounded-ful px-3 py-1 text-sm font-semi-bold text-gray-700 mr-2">
+            #{tag}
+          </span> 
+            ))}
+         
         </div>
     </div>
     )
