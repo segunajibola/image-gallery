@@ -16,12 +16,16 @@ function App() {
           setIsLoading(false);
         })
       .catch(err => console.log(err));
-  }, []);
+  }, [term]);
+
+  //when ever term changes, useEffect runs again
 
   return (
     <div className="container mx-auto">
-      <ImageSearch />
-      
+      <ImageSearch searchText={(text) => setTerm(text)} />
+
+      {/* searchText is a func we call in ImageSearch, and when its called, we have a func that gets the text parsed in and we can set the term with that text */}
+
       {isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Images loading, please wait...</h1> : <div className="grid grid-cols-3 gap-4">
        {/* // map through all images and set to "image" */}
         {images.map(image => ( 
