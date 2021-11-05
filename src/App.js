@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="container mx-auto">
-      {isLoading ? <h1 className="text-6xl">Images loading, please wait...</h1> : <div className="grid grid-cols-3 gap-4">
+      {isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Images loading, please wait...</h1> : <div className="grid grid-cols-3 gap-4">
        {/* // map through all images and set to "image" */}
         {images.map(image => ( 
           <ImageCard key={image.id}
