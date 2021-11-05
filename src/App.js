@@ -1,7 +1,13 @@
 import react, { useState, useEffect } from "react";
 
 function App() {
-  //cont []
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [term, setTerm] = useState("");
+
+  useEffect(() => {
+    fetch(`https://pixabay.com/api/"key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`)
+  });
 
   return (
     <div class="max-w-sm rounded overflow-hidden shadow-lg">
