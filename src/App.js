@@ -1,7 +1,7 @@
 import react, { useState, useEffect } from "react";
 
 function App() {
-  cont []
+  //cont []
 
   return (
     <div class="max-w-sm rounded overflow-hidden shadow-lg">
