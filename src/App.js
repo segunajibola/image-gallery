@@ -1,5 +1,6 @@
 import react, { useState, useEffect } from "react";
 import ImageCard from "./components/ImageCard";
+import ImageSearch from "./components/ImageSearch";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <div className="container mx-auto">
+      <ImageSearch />
       {isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Images loading, please wait...</h1> : <div className="grid grid-cols-3 gap-4">
        {/* // map through all images and set to "image" */}
         {images.map(image => ( 
